@@ -1,0 +1,870 @@
+{
+	"info": {
+		"_postman_id": "0461c7cc-cc58-4a8b-9b0e-0d29bff4b219",
+		"name": "FinalTask_QA_Jubelio_IkhlasAminuddin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json",
+		"_exporter_id": "25962443",
+		"_collection_link": "https://www.postman.com/aminuddinikhlas/workspace/testing/collection/25962443-0461c7cc-cc58-4a8b-9b0e-0d29bff4b219?action=share&creator=25962443&source=collection_link"
+	},
+	"item": [
+		{
+			"name": "Login",
+			"item": [
+				{
+					"name": "Successfull Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"var respon = JSON.parse(responseBody)\r",
+									"pm.collectionVariables.set(\"email\", respon.userName);\r",
+									"pm.collectionVariables.set(\"pass\", \"Jubelio123!\");\r",
+									"\r",
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\": \"qa.rakamin.jubelio@gmail.com\",\r\n\"password\": \"Jubelio123!\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{UrlJubelio}}/login"
+					},
+					"response": [
+						{
+							"name": "Succssfull Login",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"email\": \"qa.rakamin.jubelio@gmail.com\",\r\n\"password\": \"Jubelio123!\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{UrlJubelio}}/login"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 31 May 2023 02:30:48 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "origin,accept-encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15724800; includeSubDomains"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7cfbcc04fb063e61-SIN"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"token\": \"eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlVTRVI6cWEucmFrYW1pbi5qdWJlbGlvQGdtYWlsLmNvbTozNi42OS45LjM2IiwiZXhwIjoxNjg1NTQzNDQ4ODMwLCJpYXQiOjE2ODU1MDAyNDh9.Rqyezf5waE05_fsQSGzPYy2EScL8c4i78i4INPd5cYc\",\n    \"passwordExpired\": false,\n    \"userName\": \"qa.rakamin.jubelio@gmail.com\",\n    \"fullName\": \"qa.rakamin.jubelio\",\n    \"subscription\": null,\n    \"billingPhone\": null,\n    \"phone\": \"+6281317395136\",\n    \"roles\": [\n        {\n            \"role_id\": -1\n        }\n    ],\n    \"restore_id\": \"5240bd75-a50c-474a-838b-443864dd7153\",\n    \"acls\": [],\n    \"currentLocation\": null,\n    \"packageId\": 2,\n    \"trialLeft\": 31,\n    \"showGettingStarted\": true,\n    \"showOnboardingWizard\": false,\n    \"currentCompany\": 61116,\n    \"companies\": [\n        {\n            \"user_id\": 76104,\n            \"company_id\": 61116,\n            \"company_name\": \"default\",\n            \"package_id\": 2,\n            \"registered_date\": \"2023-02-03T04:20:35.554Z\",\n            \"show_getting_started\": true,\n            \"show_onboarding_wizard\": false,\n            \"pos_show_getting_started\": false,\n            \"enable_fulfillment\": false,\n            \"is_owner\": true,\n            \"expired_trial_date\": \"2023-06-30T05:00:00.000Z\",\n            \"is_wms_migrated\": false,\n            \"is_stock_v2_migrated\": false,\n            \"load_limited_data\": false,\n            \"restore_id\": \"5240bd75-a50c-474a-838b-443864dd7153\"\n        }\n    ],\n    \"isOwner\": true,\n    \"posShowGettingStarted\": false,\n    \"enableFulfillment\": false,\n    \"is_wms_migrated\": false,\n    \"is_stock_v2_migrated\": false,\n    \"loadLimitedData\": false\n}"
+						}
+					]
+				},
+				{
+					"name": "Failed Login",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"An internal server error occurred\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"email\": \"user@example.com\",\r\n\"password\": \"password\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{UrlJubelio}}/login"
+					},
+					"response": [
+						{
+							"name": "Failed Login (negative case)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n\"email\": \"user@example.com\",\r\n\"password\": \"password\"\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{UrlJubelio}}/login"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 31 May 2023 02:33:04 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "origin,accept-encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15724800; includeSubDomains"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7cfbcf5c8ad03e61-SIN"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"An internal server error occurred\",\n    \"code\": \"Invalid email or password\"\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Product Price",
+			"item": [
+				{
+					"name": "Success Get Product Price",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"protocolProfileBehavior": {
+						"disableBodyPruning": true
+					},
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlVTRVI6cWEucmFrYW1pbi5qdWJlbGlvQGdtYWlsLmNvbTozNi42OS45LjM2IiwiZXhwIjoxNjg1NTQzNDQ4ODMwLCJpYXQiOjE2ODU1MDAyNDh9.Rqyezf5waE05_fsQSGzPYy2EScL8c4i78i4INPd5cYc",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": ""
+						},
+						"url": "{{UrlJubelio}}/inventory/internal-price-list/"
+					},
+					"response": [
+						{
+							"name": "Success Get Product Price",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlVTRVI6cWEucmFrYW1pbi5qdWJlbGlvQGdtYWlsLmNvbTozNi42OS45LjM2IiwiZXhwIjoxNjg1NTQzNDQ4ODMwLCJpYXQiOjE2ODU1MDAyNDh9.Rqyezf5waE05_fsQSGzPYy2EScL8c4i78i4INPd5cYc",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": ""
+								},
+								"url": "{{UrlJubelio}}/inventory/internal-price-list/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 31 May 2023 02:39:46 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "CF-Ray",
+									"value": "7cfbd92bac294cdd-SIN"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "Strict-Transport-Security",
+									"value": "max-age=15724800; includeSubDomains"
+								},
+								{
+									"key": "Vary",
+									"value": "origin,accept-encoding"
+								},
+								{
+									"key": "cf-apo-via",
+									"value": "origin,host"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"channels\": [\n        {\n            \"store_id\": \"-1\",\n            \"channel_name\": \"internal\",\n            \"store_name\": \"default\"\n        }\n    ],\n    \"data\": [\n        {\n            \"item_group_id\": 6,\n            \"item_id\": 2,\n            \"is_archived\": false,\n            \"item_name\": \"Busana Wanita - XL\",\n            \"item_code\": \"BUS-WAN-4L\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 19451\n                }\n            ],\n            \"last_modified\": \"2023-05-28T14:42:29.221Z\",\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 6,\n            \"item_id\": 3,\n            \"is_archived\": false,\n            \"item_name\": \"Busana Wanita - M\",\n            \"item_code\": \"BUS-WAN-M\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 670000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 7,\n            \"item_id\": 4,\n            \"is_archived\": false,\n            \"item_name\": \"Longsleeve\",\n            \"item_code\": \"123\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 12302564\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 8,\n            \"item_id\": 5,\n            \"is_archived\": false,\n            \"item_name\": \"Kemeja Formal Gucci\",\n            \"item_code\": \"K918BQI\",\n            \"brand_name\": \"ZARA\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 150000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 10,\n            \"item_id\": 7,\n            \"is_archived\": false,\n            \"item_name\": \"Laptop\",\n            \"item_code\": \"KQS123A\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 6500000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 17,\n            \"item_id\": 14,\n            \"is_archived\": false,\n            \"item_name\": \"Baju pria\",\n            \"item_code\": \"lshfsliksnl\",\n            \"brand_name\": \"Percobaan\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 200\n                }\n            ],\n            \"last_modified\": \"2023-05-07T07:04:13.907Z\",\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 22,\n            \"item_id\": 18,\n            \"is_archived\": false,\n            \"item_name\": \"Keyboard\",\n            \"item_code\": \"5075s\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 1000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 24,\n            \"item_id\": 20,\n            \"is_archived\": false,\n            \"item_name\": \"Huawei P20 Pro\",\n            \"item_code\": \"1231231234\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 2150000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"2293578.064219626168\"\n        },\n        {\n            \"item_group_id\": 26,\n            \"item_id\": 22,\n            \"is_archived\": false,\n            \"item_name\": \"Lenovo Legion 5 (2022)\",\n            \"item_code\": \"15ACH6\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 15000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 27,\n            \"item_id\": 23,\n            \"is_archived\": false,\n            \"item_name\": \"Outer Wanita\",\n            \"item_code\": \"OW\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 170000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 31,\n            \"item_id\": 27,\n            \"is_archived\": false,\n            \"item_name\": \"TWS 198\",\n            \"item_code\": \"1234567\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 120000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 34,\n            \"item_id\": 30,\n            \"is_archived\": false,\n            \"item_name\": \"Soundcore Life Dot 3i\",\n            \"item_code\": \"SD3i\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 550000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 35,\n            \"item_id\": 31,\n            \"is_archived\": false,\n            \"item_name\": \"Samsung Note 8 - Hitam\",\n            \"item_code\": \"SAM-NOT-8-HIT\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 200\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 36,\n            \"item_id\": 32,\n            \"is_archived\": false,\n            \"item_name\": \"White T-Shirt\",\n            \"item_code\": \"TSH-L-SHG\",\n            \"brand_name\": \"Sky High Farm\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 499000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"499000.000000000000\"\n        },\n        {\n            \"item_group_id\": 41,\n            \"item_id\": 35,\n            \"is_archived\": false,\n            \"item_name\": \"bio-lingzhi - kuning, 5XL\",\n            \"item_code\": \"BIO-KUN-5XL\",\n            \"brand_name\": \"tidak ada\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 100000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 42,\n            \"item_id\": 36,\n            \"is_archived\": false,\n            \"item_name\": \"zip-up leather biker jacket ysl\",\n            \"item_code\": \"12949028\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 81001107\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 43,\n            \"item_id\": 37,\n            \"is_archived\": false,\n            \"item_name\": \"Sepatu Sneakers\",\n            \"item_code\": \"add100\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 200000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 50,\n            \"item_id\": 44,\n            \"is_archived\": false,\n            \"item_name\": \"TestBaju1\",\n            \"item_code\": \"5\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 200000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 54,\n            \"item_id\": 49,\n            \"is_archived\": false,\n            \"item_name\": \"Satin And Lace Dressing Gown - Black, Semua Ukuran\",\n            \"item_code\": \"DRE-GOW-BLA-SEM\",\n            \"brand_name\": \"Satin And Lace\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 300000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 54,\n            \"item_id\": 46,\n            \"is_archived\": false,\n            \"item_name\": \"Satin And Lace Dressing Gown - Maroon, Semua Ukuran\",\n            \"item_code\": \"DRE-GOW-MAR-SEM\",\n            \"brand_name\": \"Satin And Lace\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 300000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 54,\n            \"item_id\": 47,\n            \"is_archived\": false,\n            \"item_name\": \"Satin And Lace Dressing Gown - White, Semua Ukuran\",\n            \"item_code\": \"DRE-GOW-WHI-SEM\",\n            \"brand_name\": \"Satin And Lace\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 300000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 54,\n            \"item_id\": 48,\n            \"is_archived\": false,\n            \"item_name\": \"Satin And Lace Dressing Gown - Brown, Semua Ukuran\",\n            \"item_code\": \"DRE-GOW-BRO-SEM\",\n            \"brand_name\": \"Satin And Lace\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 300000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 55,\n            \"item_id\": 50,\n            \"is_archived\": false,\n            \"item_name\": \"Xiaomi 12T\",\n            \"item_code\": \"KSXADASDMG\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 6000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 58,\n            \"item_id\": 53,\n            \"is_archived\": false,\n            \"item_name\": \"Kaos Kasual Pria\",\n            \"item_code\": \"1234567123\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 50000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 59,\n            \"item_id\": 54,\n            \"is_archived\": false,\n            \"item_name\": \"Apple Iphone 11\",\n            \"item_code\": \"Purple-11\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 8000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"4127090.993312500000\"\n        },\n        {\n            \"item_group_id\": 62,\n            \"item_id\": 55,\n            \"is_archived\": false,\n            \"item_name\": \"TEST AKU\",\n            \"item_code\": \"01002002\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 800000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 63,\n            \"item_id\": 56,\n            \"is_archived\": false,\n            \"item_name\": \"test02\",\n            \"item_code\": \"201226665\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 8000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 68,\n            \"item_id\": 59,\n            \"is_archived\": false,\n            \"item_name\": \"Baju prias jsahdjasd\",\n            \"item_code\": \"BIO-KUN-5XL dsf\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 2000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 69,\n            \"item_id\": 60,\n            \"is_archived\": false,\n            \"item_name\": \"dFDSfSDFS\",\n            \"item_code\": \"EW35424GFDFTG\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 32894928374\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 70,\n            \"item_id\": 61,\n            \"is_archived\": false,\n            \"item_name\": \"Test celana\",\n            \"item_code\": \"abcd\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 90000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 72,\n            \"item_id\": 63,\n            \"is_archived\": false,\n            \"item_name\": \"Digital ebook\",\n            \"item_code\": \"11179\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 150000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"200000.000000000000\"\n        },\n        {\n            \"item_group_id\": 73,\n            \"item_id\": 64,\n            \"is_archived\": false,\n            \"item_name\": \"Hoodie Hijau EID\",\n            \"item_code\": \"HJUEID\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 250000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 78,\n            \"item_id\": 66,\n            \"is_archived\": false,\n            \"item_name\": \"10.4 10W40\",\n            \"item_code\": \"RM-CHO-IJH\",\n            \"brand_name\": \"Adidas\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": null\n                }\n            ],\n            \"last_modified\": \"2023-05-14T12:45:01.725Z\",\n            \"hpp\": \"4000.0000000000000000\"\n        },\n        {\n            \"item_group_id\": 80,\n            \"item_id\": 68,\n            \"is_archived\": false,\n            \"item_name\": \"VGA RTX 2060\",\n            \"item_code\": \"OC Edition\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 3800000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 82,\n            \"item_id\": 70,\n            \"is_archived\": false,\n            \"item_name\": \"Tes Zelin\",\n            \"item_code\": \"BDD-MDD-XDD\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 100000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"12500000.000000000000\"\n        },\n        {\n            \"item_group_id\": 83,\n            \"item_id\": 71,\n            \"is_archived\": false,\n            \"item_name\": \"Iphone 14 Pro Max\",\n            \"item_code\": \"IPH8111\",\n            \"brand_name\": \"Apple\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 21000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"1.00000000000000000000\"\n        },\n        {\n            \"item_group_id\": 85,\n            \"item_id\": 73,\n            \"is_archived\": false,\n            \"item_name\": \"iMac M1\",\n            \"item_code\": \"BLU-XX-APP\",\n            \"brand_name\": \"Apple\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 26000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": \"13000000.500000000000\"\n        },\n        {\n            \"item_group_id\": 87,\n            \"item_id\": 75,\n            \"is_archived\": false,\n            \"item_name\": \"Kemeja Batik\",\n            \"item_code\": \"KB123456\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 99000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 88,\n            \"item_id\": 76,\n            \"is_archived\": false,\n            \"item_name\": \"Mini MP3 Player\",\n            \"item_code\": \"12\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 250000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 90,\n            \"item_id\": 78,\n            \"is_archived\": false,\n            \"item_name\": \"TWS - hitam\",\n            \"item_code\": \"TWS-HIT\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 150000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 90,\n            \"item_id\": 79,\n            \"is_archived\": false,\n            \"item_name\": \"TWS - pink\",\n            \"item_code\": \"TWS- PI\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 150000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 98,\n            \"item_id\": 93,\n            \"is_archived\": false,\n            \"item_name\": \"Asus VivoBook Ultra 14 K413\",\n            \"item_code\": \"ASUS-BL-K413\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 12700000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 99,\n            \"item_id\": 94,\n            \"is_archived\": false,\n            \"item_name\": \"BAJU TIDUR DASTER KIMONO CRINKLE CASUAL\",\n            \"item_code\": \"FF220106TF\",\n            \"brand_name\": \"06Dress\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 89000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 100,\n            \"item_id\": 95,\n            \"is_archived\": false,\n            \"item_name\": \"Barang Coba\",\n            \"item_code\": \"1111111\",\n            \"brand_name\": \"Lenovo\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 3000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 101,\n            \"item_id\": 96,\n            \"is_archived\": false,\n            \"item_name\": \"Gelang\",\n            \"item_code\": \"000000000000000000000000000000\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 80000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 102,\n            \"item_id\": 97,\n            \"is_archived\": false,\n            \"item_name\": \"ASUS VivoBook\",\n            \"item_code\": \"123456\",\n            \"brand_name\": \"ASUS VivoBook\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 5000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 103,\n            \"item_id\": 98,\n            \"is_archived\": false,\n            \"item_name\": \"asdasdas\",\n            \"item_code\": \"213qwe\",\n            \"brand_name\": \"asdasd\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 234234\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 111,\n            \"item_id\": 99,\n            \"is_archived\": false,\n            \"item_name\": \"Kaos polos\",\n            \"item_code\": \"401810 7001856\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 45000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 112,\n            \"item_id\": 100,\n            \"is_archived\": false,\n            \"item_name\": \"Baju Batik\",\n            \"item_code\": \"14352ye\",\n            \"brand_name\": \"shdf\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 13243\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 113,\n            \"item_id\": 101,\n            \"is_archived\": false,\n            \"item_name\": \"Test\",\n            \"item_code\": \"aa\",\n            \"brand_name\": \"aa\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 122222\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 116,\n            \"item_id\": 104,\n            \"is_archived\": false,\n            \"item_name\": \"Cardigan Wanita Uhuy\",\n            \"item_code\": \"129\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 1500000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 117,\n            \"item_id\": 105,\n            \"is_archived\": false,\n            \"item_name\": \"sdadasdsadasdasdsadsa\",\n            \"item_code\": \"213415435345\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 250000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 123,\n            \"item_id\": 111,\n            \"is_archived\": false,\n            \"item_name\": \"Xiaomi 13 Pro\",\n            \"item_code\": \"9829343434\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 5900000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 124,\n            \"item_id\": 112,\n            \"is_archived\": false,\n            \"item_name\": \"Kemeja pria\",\n            \"item_code\": \"KJ01\",\n            \"brand_name\": \"adidas\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 400000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 127,\n            \"item_id\": 115,\n            \"is_archived\": false,\n            \"item_name\": \"erikgoes cloeth\",\n            \"item_code\": \"1010\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 10000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 128,\n            \"item_id\": 116,\n            \"is_archived\": false,\n            \"item_name\": \"Kemeja Lengan Pendek\",\n            \"item_code\": \"5006872553\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 280000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 129,\n            \"item_id\": 117,\n            \"is_archived\": false,\n            \"item_name\": \"assasas\",\n            \"item_code\": \"dddddd\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 0\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 131,\n            \"item_id\": 119,\n            \"is_archived\": false,\n            \"item_name\": \"Erigo Short Shirt Jazlyn Black\",\n            \"item_code\": \"ER-86323457\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 129900\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 133,\n            \"item_id\": 121,\n            \"is_archived\": false,\n            \"item_name\": \"Asus X505ZAaa\",\n            \"item_code\": \"199908\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 9000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 134,\n            \"item_id\": 122,\n            \"is_archived\": false,\n            \"item_name\": \"Macbook\",\n            \"item_code\": \"S90KU78\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 15500000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 137,\n            \"item_id\": 124,\n            \"is_archived\": false,\n            \"item_name\": \"Asus Vivobook 14X OLED\",\n            \"item_code\": \"SKUJKZ09\",\n            \"brand_name\": \"2534\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 14500000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 138,\n            \"item_id\": 125,\n            \"is_archived\": false,\n            \"item_name\": \"Hoodie\",\n            \"item_code\": \"12345678910\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 300000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 140,\n            \"item_id\": 127,\n            \"is_archived\": false,\n            \"item_name\": \"Baju Kaos Hitam Adem Dragon\",\n            \"item_code\": \"BJHD-B-AZ-06/2023\",\n            \"brand_name\": \"Kaos Adem\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 100000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 141,\n            \"item_id\": 128,\n            \"is_archived\": false,\n            \"item_name\": \"Macbook Pro 16 Inch 10-CoreCPU, 16-Core GPU, 16 GB RAM, 1 TB\",\n            \"item_code\": \"APL-16-05/2023\",\n            \"brand_name\": \"Apple\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 25000000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 142,\n            \"item_id\": 129,\n            \"is_archived\": false,\n            \"item_name\": \"Baju Tidur - S-M\",\n            \"item_code\": \"BAJ-TID-S-M\",\n            \"brand_name\": \"Yoon\",\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 200000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        },\n        {\n            \"item_group_id\": 143,\n            \"item_id\": 130,\n            \"is_archived\": false,\n            \"item_name\": \"Asus FX 505-DV Ryzen 7\",\n            \"item_code\": \"ASFX-505DV\",\n            \"brand_name\": null,\n            \"prices\": [\n                {\n                    \"store_id\": -1,\n                    \"price\": 17800000\n                }\n            ],\n            \"last_modified\": null,\n            \"hpp\": null\n        }\n    ],\n    \"totalCount\": 66,\n    \"modified_by\": [\n        {\n            \"item_id\": 2,\n            \"store_id\": null,\n            \"email\": \"qa.rakamin.jubelio@gmail.com\",\n            \"prev_price\": \"1945\",\n            \"modified_date\": \"2023-05-26T18:39:57.556Z\"\n        },\n        {\n            \"item_id\": 14,\n            \"store_id\": null,\n            \"email\": \"qa.rakamin.jubelio@gmail.com\",\n            \"prev_price\": null,\n            \"modified_date\": null\n        }\n    ],\n    \"channel_status\": []\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Upload Product Image",
+			"item": [
+				{
+					"name": "Success Upload Product Image",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TokenAuth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "Termurah__Rice_Cooker_Miyako_Mcm_606_A___Magic_Com_06l___Pen.jpeg"
+								},
+								{
+									"key": "uid",
+									"value": "111",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Termurah__Rice_Cooker_Miyako_Mcm_606_A___Magic_Com_06l___Pen.jpg",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{UrlJubelio}}/inventory/upload-image"
+					},
+					"response": [
+						{
+							"name": "Success Upload Product Image",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TokenAuth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "Termurah__Rice_Cooker_Miyako_Mcm_606_A___Magic_Com_06l___Pen.jpeg"
+										},
+										{
+											"key": "uid",
+											"value": "111",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Termurah__Rice_Cooker_Miyako_Mcm_606_A___Magic_Com_06l___Pen.jpg",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{UrlJubelio}}/inventory/upload-image"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 31 May 2023 03:00:01 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "origin,accept-encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15724800; includeSubDomains"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7cfbf6cdea754cdd-SIN"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"success\": true,\n    \"name\": \"Termurah__Rice_Cooker_Miyako_Mcm_606_A___Magic_Com_06l___Pen.jpg\",\n    \"key\": \"https://jubelio.blob.core.windows.net/images/lkfb0mjjtlyoz8e6bkdjeg/111.jpeg\",\n    \"thumbnail\": \"https://jubelio.blob.core.windows.net/images/lkfb0mjjtlyoz8e6bkdjeg/111_thumb.jpg\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Fail Upload Product Image (blank uid)",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 400\", function () {\r",
+									"    pm.response.to.have.status(400);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"is not allowed to be empty\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TokenAuth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "file",
+									"type": "file",
+									"src": "Termurah__Rice_Cooker_Miyako_Mcm_606_A___Magic_Com_06l___Pen.jpeg"
+								},
+								{
+									"key": "uid",
+									"value": "",
+									"type": "text"
+								},
+								{
+									"key": "name",
+									"value": "Termurah__Rice_Cooker_Miyako_Mcm_606_A___Magic_Com_06l___Pen.jpg",
+									"type": "text"
+								}
+							]
+						},
+						"url": "{{UrlJubelio}}/inventory/upload-image"
+					},
+					"response": [
+						{
+							"name": "Fail Upload Product Image (blank uid)",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TokenAuth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "formdata",
+									"formdata": [
+										{
+											"key": "file",
+											"type": "file",
+											"src": "Termurah__Rice_Cooker_Miyako_Mcm_606_A___Magic_Com_06l___Pen.jpeg"
+										},
+										{
+											"key": "uid",
+											"value": "",
+											"type": "text"
+										},
+										{
+											"key": "name",
+											"value": "Termurah__Rice_Cooker_Miyako_Mcm_606_A___Magic_Com_06l___Pen.jpg",
+											"type": "text"
+										}
+									]
+								},
+								"url": "{{UrlJubelio}}/inventory/upload-image"
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 31 May 2023 03:02:03 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "origin,accept-encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15724800; includeSubDomains"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7cfbf9d09d3f4cdd-SIN"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 400,\n    \"error\": \"Bad Request\",\n    \"message\": \"child \\\"uid\\\" fails because [\\\"uid\\\" is not allowed to be empty]\",\n    \"validation\": {\n        \"source\": \"payload\",\n        \"keys\": [\n            \"uid\"\n        ]\n    }\n}"
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Delete Product",
+			"item": [
+				{
+					"name": "Success Delete Items",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 200\", function () {\r",
+									"    pm.response.to.have.status(200);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"ok\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TokenAuth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ids\": [\r\n    1\r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{UrlJubelio}}/inventory/items/"
+					},
+					"response": [
+						{
+							"name": "Success Delete Items",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TokenAuth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ids\": [\r\n    1\r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{UrlJubelio}}/inventory/items/"
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 31 May 2023 05:03:40 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "origin,accept-encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15724800; includeSubDomains"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7cfcabf7da8940dd-SIN"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"status\": \"ok\"\n}"
+						}
+					]
+				},
+				{
+					"name": "Fail Delete Item",
+					"event": [
+						{
+							"listen": "test",
+							"script": {
+								"exec": [
+									"pm.test(\"Status code is 500\", function () {\r",
+									"    pm.response.to.have.status(500);\r",
+									"});\r",
+									"pm.test(\"Body matches string\", function () {\r",
+									"    pm.expect(pm.response.text()).to.include(\"An internal server error occurred\");\r",
+									"});"
+								],
+								"type": "text/javascript"
+							}
+						}
+					],
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "Bearer {{TokenAuth}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n  \"ids\": [\r\n    \r\n  ]\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": "{{UrlJubelio}}/inventory/items/"
+					},
+					"response": [
+						{
+							"name": "Fail Delete Item",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"key": "Authorization",
+										"value": "Bearer {{TokenAuth}}",
+										"type": "text"
+									}
+								],
+								"body": {
+									"mode": "raw",
+									"raw": "{\r\n  \"ids\": [\r\n    \r\n  ]\r\n}",
+									"options": {
+										"raw": {
+											"language": "json"
+										}
+									}
+								},
+								"url": "{{UrlJubelio}}/inventory/items/"
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Date",
+									"value": "Wed, 31 May 2023 05:04:53 GMT"
+								},
+								{
+									"key": "Content-Type",
+									"value": "application/json; charset=utf-8"
+								},
+								{
+									"key": "Transfer-Encoding",
+									"value": "chunked"
+								},
+								{
+									"key": "Connection",
+									"value": "keep-alive"
+								},
+								{
+									"key": "vary",
+									"value": "origin,accept-encoding"
+								},
+								{
+									"key": "Cache-Control",
+									"value": "no-cache"
+								},
+								{
+									"key": "Content-Encoding",
+									"value": "gzip"
+								},
+								{
+									"key": "strict-transport-security",
+									"value": "max-age=15724800; includeSubDomains"
+								},
+								{
+									"key": "CF-Cache-Status",
+									"value": "DYNAMIC"
+								},
+								{
+									"key": "Server",
+									"value": "cloudflare"
+								},
+								{
+									"key": "CF-RAY",
+									"value": "7cfcadbe09a540dd-SIN"
+								}
+							],
+							"cookie": [],
+							"body": "{\n    \"statusCode\": 500,\n    \"error\": \"Internal Server Error\",\n    \"message\": \"An internal server error occurred\",\n    \"code\": \"42601\"\n}"
+						}
+					]
+				}
+			]
+		}
+	],
+	"variable": [
+		{
+			"key": "UrlJubelio",
+			"value": "https://api.jubelio.com"
+		},
+		{
+			"key": "UrlJubelio",
+			"value": ""
+		},
+		{
+			"key": "email",
+			"value": ""
+		},
+		{
+			"key": "pass",
+			"value": ""
+		},
+		{
+			"key": "TokenAuth",
+			"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IlVTRVI6cWEucmFrYW1pbi5qdWJlbGlvQGdtYWlsLmNvbTozNi42OS45LjM2IiwiZXhwIjoxNjg1NTQzNDQ4ODMwLCJpYXQiOjE2ODU1MDAyNDh9.Rqyezf5waE05_fsQSGzPYy2EScL8c4i78i4INPd5cYc"
+		}
+	]
+}
