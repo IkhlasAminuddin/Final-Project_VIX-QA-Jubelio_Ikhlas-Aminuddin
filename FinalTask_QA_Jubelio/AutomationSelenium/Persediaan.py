@@ -38,7 +38,7 @@ class Sampletest(unittest.TestCase):
         error_message_locator = (By.XPATH, "/html[1]/body[1]/div[1]/div[1]/div[1]/li[1]")
         wait = WebDriverWait(driver, 10)
         wait.until(EC.text_to_be_present_in_element(error_message_locator, "Qty adjustment tidak boleh yang kosong"))
-
+#aaaaaaa
         # Validate the error message
         error_message = driver.find_element(*error_message_locator).text
         if "Qty adjustment tidak boleh yang kosong" in error_message:
